@@ -22,7 +22,8 @@ Rails.application.routes.draw do
   scope module: :customer do
 
     #カスタマー
-    resource :customers, only: [:my_page, :edit, :update]
+    resource :customers, only: [:edit, :update]
+      get 'customers/my_page' => 'customers#show'
       get 'customers/leave' => 'customers#leave'
       patch 'customers/withdraw' => 'customers#withdraw'
 
