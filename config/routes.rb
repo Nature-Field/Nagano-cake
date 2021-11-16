@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     registrations: "customer/registrations",
     sessions: 'customer/sessions'
   }
-  
+
   # 管理者用
   # URL /admin/sign_in ...
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
@@ -48,7 +48,7 @@ Rails.application.routes.draw do
   namespace :admin do
     #トップページのルーティング
     get 'admin' => 'homes#top'
-    
+
     #カスタマー
     resources :customers, only:[:index, :show, :edit, :update]
 
