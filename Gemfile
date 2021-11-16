@@ -54,3 +54,4 @@ gem "refile-mini_magick"
 gem 'ransack'
 gem 'dotenv-rails'
 gem 'kaminari'
+gem "enum_help"
