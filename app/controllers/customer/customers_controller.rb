@@ -5,6 +5,13 @@ class CustomersController < ApplicationController
   def edit
   end
 
+  def update
+  end
+
   def leave
   end
+
+  def withdraw
+  end
+
 end
