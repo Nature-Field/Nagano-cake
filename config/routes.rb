@@ -15,8 +15,6 @@ Rails.application.routes.draw do
 
   #customer側↓
 
-
-
   scope module: :customer do
     #ホーム画面ルーティング
     root to: 'homes#top'

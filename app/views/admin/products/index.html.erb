@@ -1,2 +1,24 @@
-<h1>Admin::Products#index</h1>
-<p>Find me in app/views/admin/products/index.html.erb</p>
+<h2>商品一覧</h2>
+<table>
+  <thead>
+    <tr>
+      <th>商品ID</th>
+      <th>商品名</th>
+      <th>税抜価格</th>
+      <th>ジャンル</th>
+      <th>ステータス</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @products.each do |p| %>
+    <tr>
+      <th><%= p.id %></th>
+      <th><%= link_to admin_product_path(p) do p.name end %></th>
+      <th><%= p.price %></th>
+      <%# p.genre.name %>
+      <th><%= p.genre_id %></th>
+      <th><%= p.is_active ? "販売中" : "販売停止中" %></th>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
