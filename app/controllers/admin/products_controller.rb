@@ -1,7 +1,8 @@
 class Admin::ProductsController < ApplicationController
 
   def index
-    @products = Product.all
+    @products = Product.page(params[:page]).reverse_order
+    # kaminari未実装
   end
 
   def show
