@@ -15,11 +15,12 @@ Rails.application.routes.draw do
 
   #customer側↓
 
-  #ホーム画面ルーティング
-  root to: 'homes#top'
-  get 'home/about' => 'homes#about'
+
 
   scope module: :customer do
+    #ホーム画面ルーティング
+    root to: 'homes#top'
+    get 'home/about' => 'homes#about'
 
     #カスタマー
     resource :customers, only: [:edit, :update]

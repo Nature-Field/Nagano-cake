@@ -1,5 +1,6 @@
-class OrdersController < ApplicationController
-  def index
+class Customer::OrdersController < ApplicationController
+  
+    def index
   end
 
   def show
@@ -16,4 +17,5 @@ class OrdersController < ApplicationController
 
   def confirm
   end
+  
 end
