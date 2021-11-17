@@ -52,6 +52,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     #トップページのルーティング
+
     get '/' => 'homes#top'
 
     #カスタマー
