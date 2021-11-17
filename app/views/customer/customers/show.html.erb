@@ -1,6 +1,10 @@
 <div class="row">
   <div class="col-md-6 offset-1">
 
+    <div class="offset-3 mb-5">
+      <h2>マイページ</h2>
+    </div>
+
     <div class="row mb-3">
       <h4 class="col-3">登録情報</h4>
       <p><%= link_to "編集する", edit_customers_path, class:"btn btn-sm btn-success" %></p>
@@ -10,27 +14,27 @@
       <tbody>
         <tr>
           <th class="col-3">氏名</th>
-          <th>山田</th>
+          <th><%=current_customer.last_name %>　<%=current_customer.first_name %></th>
         </tr>
         <tr>
           <th>カナ</th>
-          <th>ヤマダ</th>
+          <th><%=current_customer.last_name_kana %>　<%=current_customer.first_name_kana %></th>
         </tr>
         <tr>
           <th>郵便番号</th>
-          <th>0000000</th>
+          <th><%=current_customer.postal_code %></th>
         </tr>
         <tr>
           <th>住所</th>
-          <th>東京都</th>
+          <th><%=current_customer.address %></th>
         </tr>
         <tr>
           <th>電話番号</th>
-          <th>0012356</th>
+          <th><%=current_customer.phone_number %></th>
         </tr>
         <tr>
           <th>メールアドレス</th>
-          <th>555＠555</th>
+          <th><%=current_customer.email %></th>
         </tr>
       </tbody>
     </table>
