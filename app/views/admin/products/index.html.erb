@@ -16,12 +16,11 @@
       <th><%= p.id %></th>
       <th><%= link_to admin_product_path(p) do p.name end %></th>
       <th><%= p.price %></th>
-      <%# p.genre.name %>
-      <th><%= p.genre_id %></th>
+      <th><%= p.genre.name %></th>
       <th><%= p.is_active ? "販売中" : "販売停止中" %></th>
     </tr>
     <% end %>
   </tbody>
 </table>
 <%= paginate @products %>
-<%# kaminari未実装 >
+<%# kaminari未実装 %>

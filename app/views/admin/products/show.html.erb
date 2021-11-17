@@ -5,8 +5,7 @@
 <table>
   <tr><th>商品名</th><td><%= @product.name %></td></tr>
   <tr><th>商品説明</th><td><%= @product.explanation %></td></tr>
-  <%# @product.genre_id -> @product.genre.name %>
-  <tr><th>ジャンル</th><td><%= @product.genre_id %></td></tr>
+  <tr><th>ジャンル</th><td><%= @product.genre.name %></td></tr>
   <tr><th>税込価格<br>(税抜価格)</th><td><%= (@product.price * 1.1).floor %> (<%= @product.price %>)</td></tr>
   <tr><th>販売ステータス</th><td><%= @product.is_active ? "販売中" : "販売停止中" %></td></tr>
   <tr><th><%= link_to "編集する", edit_admin_product_path(@product) %></td></tr>
