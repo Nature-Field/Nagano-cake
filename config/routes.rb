@@ -32,7 +32,7 @@ Rails.application.routes.draw do
     resources :products, only: [:index, :show]
 
     #配送先
-    resources :addresses, only: [:index, :create, :edit, :update, :destroy]
+    resources :shipping_addresses, only: [:index, :create, :edit, :update, :destroy]
 
     #注文
     resources :orders, only: [:index, :show, :create, :new]

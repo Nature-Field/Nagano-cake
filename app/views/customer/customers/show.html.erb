@@ -1,2 +1,49 @@
-<h1>Customers#show</h1>
-<p>Find me in app/views/customers/show.html.erb</p>
+<div class="row">
+  <div class="col-md-6 offset-1">
+
+    <div class="row mb-3">
+      <h4 class="col-3">登録情報</h4>
+      <p><%= link_to "編集する", edit_customers_path, class:"btn btn-sm btn-success" %></p>
+    </div>
+
+    <table class="table table-bordered">
+      <tbody>
+        <tr>
+          <th class="col-3">氏名</th>
+          <th>山田</th>
+        </tr>
+        <tr>
+          <th>カナ</th>
+          <th>ヤマダ</th>
+        </tr>
+        <tr>
+          <th>郵便番号</th>
+          <th>0000000</th>
+        </tr>
+        <tr>
+          <th>住所</th>
+          <th>東京都</th>
+        </tr>
+        <tr>
+          <th>電話番号</th>
+          <th>0012356</th>
+        </tr>
+        <tr>
+          <th>メールアドレス</th>
+          <th>555＠555</th>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="row">
+      <h4 class="col-3">配送先</h4>
+      <p><%= link_to "一覧を見る", shipping_addresses_path, class:"btn btn-sm btn-primary" %></p>
+    </div>
+    <div class="row">
+      <h4 class="col-3">注文履歴</h4>
+      <p><%= link_to "一覧を見る", orders_path, class:"btn btn-sm btn-primary" %></p>
+    </div>
+
+
+  </div>
+</div>
