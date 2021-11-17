@@ -1,0 +1,10 @@
+<%= form_with model: shipping_address, local:true do |f| %>
+  <p>郵便番号(ハイフンなし)</p>
+  <%= f.text_field :postal_code %>
+  <p>住所</p>
+  <%= f.text_field :address %>
+  <p>宛名</p>
+  <%= f.text_field :name %>
+  <%= f.hidden_field :customer_id %>
+  <%= f.submit "新規登録" %>
+<% end %>
