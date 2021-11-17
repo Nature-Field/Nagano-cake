@@ -1,1 +1,9 @@
-<h1>商品一覧</h1>
+<h1>商品一覧（全<%= @products.count %>件）</h1>
+<% @products.each do |product| %>
+<% link_to product_path(product) do %>
+  <%= attachment_image_tag(product, :image, :fill, 50, 50) %>
+<% end %>
+<%= product.name %>
+<%= product.price %>
+<% end %>
+<%= paginate @products %>
