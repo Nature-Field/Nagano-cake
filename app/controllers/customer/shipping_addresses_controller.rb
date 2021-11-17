@@ -1,4 +1,5 @@
-class ShippingAddressesController < ApplicationController
+class Customer::ShippingAddressesController < ApplicationController
+  
   def index
   end
 
@@ -13,5 +14,5 @@ class ShippingAddressesController < ApplicationController
 
   def destroy
   end
-
+  
 end

@@ -1,4 +1,5 @@
-class CartProductsController < ApplicationController
+class Customer::CartProductsController < ApplicationController
+  
   def index
   end
 
@@ -16,5 +17,5 @@ class CartProductsController < ApplicationController
 
   def crate
   end
-
+  
 end

@@ -1,4 +1,5 @@
-class CustomersController < ApplicationController
+class Customer::CustomersController < ApplicationController
+  
   def show
   end
 
@@ -13,5 +14,5 @@ class CustomersController < ApplicationController
 
   def withdraw
   end
-
+  
 end
