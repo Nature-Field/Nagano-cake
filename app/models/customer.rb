@@ -23,5 +23,13 @@ class Customer < ApplicationRecord
     super && (is_deleted == false)
   end
 
+  #フルネームを表示
+  def fullname
+    self.last_name + self.first_name
+  end
+  
+  def fullname_kana
+    self.last_name_kana + self.first_name_kana
+  end
 
 end
