@@ -2,7 +2,6 @@ class Admin::ProductsController < ApplicationController
 
   def index
     @products = Product.page(params[:page]).reverse_order
-    # kaminari未実装
   end
 
   def show
@@ -11,12 +10,10 @@ class Admin::ProductsController < ApplicationController
 
   def edit
     @product = Product.find(params[:id])
-    @genres = Genre.all
   end
 
   def new
     @product = Product.new
-    @genres = Genre.all
   end
 
   def create
