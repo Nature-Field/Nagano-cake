@@ -14,5 +14,7 @@ class Order < ApplicationRecord
   validates :payment_way, presence: true
   validates :status, presence: true
 
-  enum payment_way: {クレジットカード:0, 銀行振込:1}
+  enum payment_way: {credit_card: 0, transfer: 1}
+  attr_accessor :address_number
+  attr_accessor :registered
 end
