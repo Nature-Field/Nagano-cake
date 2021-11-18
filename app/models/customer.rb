@@ -17,4 +17,11 @@ class Customer < ApplicationRecord
   validates :postal_code, presence: true, numericality: {only_integer:true}, length: {is: 7}
   validates :address, presence: true
   validates :is_deleted, inclusion: {in:[true,false]}
+
+  #ログイン時に退会済みのユーザーが同じアカウントでログイン出来ないよう制約
+  def active_for_authentication?
+    super && (is_deleted == false)
+  end
+
+
 end

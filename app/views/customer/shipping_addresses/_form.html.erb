@@ -1,0 +1,12 @@
+
+<%= form_with model: shipping_address, local:true do |f| %>
+<%= render "customer/shared/error_messages", resource: shipping_address %>
+  <p>郵便番号(ハイフンなし)</p>
+  <%= f.text_field :postal_code %>
+  <p>住所</p>
+  <%= f.text_field :address %>
+  <p>宛名</p>
+  <%= f.text_field :name %>
+  <%= f.hidden_field :customer_id, :value => current_customer.id %>
+  <%= f.submit "変更内容を保存" %>
+<% end %>
