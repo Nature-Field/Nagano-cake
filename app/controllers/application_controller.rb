@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
+    #新規登録時に追加したカラム情報の取得を許可
     devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name])
     devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name])
     devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name_kana])
@@ -13,6 +14,14 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:phone_number])
     devise_parameter_sanitizer.permit(:sign_up, keys: [:postal_code])
     devise_parameter_sanitizer.permit(:sign_up, keys: [:address])
+    #カスタマー情報編集時に、追加したカラム情報の取得を許可
+    devise_parameter_sanitizer.permit(:account_update, keys: [:last_name])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:first_name])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:last_name_kana])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:first_name_kana])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:phone_number])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:postal_code])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:address])
   end
 
 end
