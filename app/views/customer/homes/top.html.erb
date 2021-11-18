@@ -19,7 +19,7 @@
     <% @product.each do |product| %>
       <div class="col-md-3">
         <div class="card">
-
+  
           <p><%= link_to product.name, product_path(product.id) %></p>
           <p>￥<%= product.price %></p>
         </div>
