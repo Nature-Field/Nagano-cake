@@ -38,8 +38,11 @@ Rails.application.routes.draw do
       post 'orders/confirm' => 'orders#confirm'
 
     #カート商品
-    resources :cart_products, only:[:index, :destroy, :edit, :update, :create]
-      delete 'cart_products/destroy_all' => 'cart_products#destroy_all'
+    resources :cart_products, only:[:index, :destroy, :edit, :update, :create] do
+      collection do
+        delete 'cart_products/destroy_all' => 'cart_products#destroy_all'
+      end
+    end
   end
 
   #admin側↓
