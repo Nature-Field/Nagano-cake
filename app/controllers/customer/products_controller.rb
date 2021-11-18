@@ -11,5 +11,4 @@ class Customer::ProductsController < ApplicationController
   end
 
 
-
 end
