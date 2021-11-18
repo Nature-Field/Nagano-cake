@@ -9,6 +9,10 @@ class Customer::OrdersController < ApplicationController
   def create
     cart_products = current_customer.cart_products.all
     @order = current_customer.orders.new(order_params)
+<<<<<<< HEAD
+=======
+
+>>>>>>> 57200781bb40adc9f59c6a3d327c669062a4fa99
     if @order.save
       cart_products.each do |cart|
         order_detail = OrdeDetail.new
@@ -16,6 +20,10 @@ class Customer::OrdersController < ApplicationController
         order_detail.order_id = @order.id
         order_detail.quantity = cart.quantity
         order_detail.price = cart.product.price
+<<<<<<< HEAD
+=======
+        #order_detail.create_status =
+>>>>>>> 57200781bb40adc9f59c6a3d327c669062a4fa99
         order_detail.save
       end
       redirect_to orders_confirm_path
@@ -34,7 +42,11 @@ class Customer::OrdersController < ApplicationController
   end
 
   def confirm
+<<<<<<< HEAD
   @order = Order.new(order_params)
+=======
+    @order = Order.new(order_params)
+>>>>>>> 57200781bb40adc9f59c6a3d327c669062a4fa99
   if params[:order][:address_number] == "1"
     @order.name = current_customer.last_name.to_s + current_customer.first_name.to_s
     @order.address = current_customer.address
@@ -64,7 +76,7 @@ class Customer::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:name, :address, :total_price, :payment_way, :address_number, :registered, :postal_code)
+    params.require(:order).permit(:name, :address, :total_price, :payment_way, :postal_code, :address_number, :registered)
   end
 
 
