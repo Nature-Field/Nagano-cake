@@ -1,19 +1,42 @@
-<h2>さんの会員情報編集</h2>
-<%= form_with model: , local :true do |f| %>
-  会員ID
-  氏名
-  <%= f.text_field :last_name %>
-  <%= f.text_field :first_name %>
-  フリガナ
-  <%= f.text_field :last_name_kana %>
-  <%= f.text_field :first_name_kana %>
-  郵便番号
-  <%= f.text_field :postal_code %>
-  住所
-  <%= f.text_area :address %>
-  電話番号
-  <%= f.text_field :phone_number %>
-  メールアドレス
-  <%= f.text_field :email %>
-  会員ステータス
-<% end %>
+<div class="container">
+  <div class="row">
+    <h4 class="theme"><%= @customer.fullname %>さんの会員情報編集</h4>
+  </div>
+  <div class="row">
+    <%= form_with model:@customer,url: admin_customer_path(@customer), local:true do |f| %>
+      会員ID <%= @customer.id %><br>
+      <div class="form-group">氏名
+        <%= f.text_field :last_name %>
+        <%= f.text_field :first_name %>
+      </div>
+      <div class="form-group">
+        フリガナ
+        <%= f.text_field :last_name_kana %>
+        <%= f.text_field :first_name_kana %>
+      </div>
+      <div class="form-group">
+        郵便番号
+        <%= f.text_field :postal_code %>
+      </div>
+      <div class="form-group">
+        住所
+        <%= f.text_field :address %>
+      </div>
+      <div class="form-group">
+        電話番号
+        <%= f.text_field :phone_number %>
+      </div>
+      <div class="form-group">
+        メールアドレス
+        <%= f.text_field :email %>
+      </div>
+      <div class="form-group">
+        会員ステータス
+        <%= f.radio_button :is_deleted, "false" %>有効
+        <%= f.radio_button :is_deleted, "true" %>退会
+      </div>
+      <%= f.submit "変更を保存", class:"btn btn-sm btn-success" %>
+    <% end %>
+
+  </div>
+</div>
