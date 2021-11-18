@@ -1,7 +1,8 @@
 class Admin::ProductsController < ApplicationController
 
   def index
-    @products = Product.all
+    @products = Product.page(params[:page]).reverse_order
+    # kaminari未実装
   end
 
   def show
@@ -9,29 +10,33 @@ class Admin::ProductsController < ApplicationController
   end
 
   def edit
+    @product = Product.find(params[:id])
+    @genres = Genre.all
   end
 
   def new
     @product = Product.new
-
+    @genres = Genre.all
   end
 
   def create
-    @product = Product.new(products_params)
+    @product = Product.new(product_params)
     if @product.save
-    redirect_to admin_product_path(@product)
-    else
-    redirect_to admin_products_path
-    end
+      redirect_to admin_product_path(@product)
+    else render :new end
   end
 
   def update
+    @product = Product.find(params[:id])
+    if @product.update(product_params)
+      redirect_to admin_product_path(@product)
+    else render :edit end
   end
 
 
   private
 
-  def products_params
+  def product_params
     params.require(:product).permit(:genre_id, :is_active, :name, :explanation, :price, :image)
   end
 end

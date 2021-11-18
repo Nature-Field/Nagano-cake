@@ -1,0 +1,19 @@
+<h2>さんの会員情報編集</h2>
+<%= form_with model: , local :true do |f| %>
+  会員ID
+  氏名
+  <%= f.text_field :last_name %>
+  <%= f.text_field :first_name %>
+  フリガナ
+  <%= f.text_field :last_name_kana %>
+  <%= f.text_field :first_name_kana %>
+  郵便番号
+  <%= f.text_field :postal_code %>
+  住所
+  <%= f.text_area :address %>
+  電話番号
+  <%= f.text_field :phone_number %>
+  メールアドレス
+  <%= f.text_field :email %>
+  会員ステータス
+<% end %>
