@@ -2,11 +2,10 @@
 
 <%= form_with model: [:admin,@product],local:true do |f| %>
   <div>商品画像　<%= f.attachment_field :image %></div>
-  <div>商品名　<%= f.text_field :name %></div>
-  <div>商品説明　<%= f.text_area :explanation %></div>
-  <%# genre未実装のため、選択肢手動で作成 %>
-  <div>ジャンル　<%= f.select :genre_id, { 'ケーキ': 1, 'プリン': 2, '焼き菓子': 3, 'キャンディ': 4 },{ include_blank: '--選択してください--'} %></div>
-  <div>税抜価格　<%= f.number_field :price %></div>
-  <div>販売ステータス　<%= f.radio_button :is_active, "true" %>販売中<%= f.radio_button :is_active, "false" %>販売停止中</div>
+  <div>商品名　<%= f.text_field :name, placeholder: "商品名" %></div>
+  <div>商品説明　<%= f.text_area :explanation, placeholder: "ここに説明文を記述します" %></div>
+  <div>ジャンル　<%= f.collection_select :genre_id, @genres, :id, :name, { prompt: '--選択してください--'} %></div>
+  <div>税抜価格　<%= f.number_field :price, placeholder: "1000" %></div>
+  <div>販売ステータス　<%= f.radio_button :is_active, "true" %>販売中　<%= f.radio_button :is_active, "false" %>販売停止中</div>
   <div><%= f.submit '新規登録'%></div>
 <% end %>
