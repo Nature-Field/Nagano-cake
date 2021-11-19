@@ -46,7 +46,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     #トップページのルーティング
-    get 'admin' => 'homes#top'
+    get '/' => 'homes#top'
 
     #カスタマー
     resources :customers, only:[:index, :show, :edit, :update]
