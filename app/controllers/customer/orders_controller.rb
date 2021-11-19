@@ -10,10 +10,13 @@ class Customer::OrdersController < ApplicationController
   def create
     cart_products = current_customer.cart_products.all
     @order = current_customer.orders.new(order_params)
+    @order.cost = 800
+    #@order.total_price = (合計金額 + 送料)→変数決まり次第、修正してください
+    @order.total_price = (0 + 800)
 
     if @order.save
       cart_products.each do |cart|
-        order_detail = OrdeDetail.new
+        order_detail = OrderDetail.new
         order_detail.product_id = cart.product_id
         order_detail.order_id = @order.id
         order_detail.quantity = cart.quantity
