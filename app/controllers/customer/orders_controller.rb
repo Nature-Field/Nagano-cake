@@ -2,6 +2,7 @@ class Customer::OrdersController < ApplicationController
   before_action :authenticate_customer!
 
   def index
+    @orders = current_customer.orders
   end
 
   def show
@@ -57,10 +58,10 @@ class Customer::OrdersController < ApplicationController
       render :new
     end
   else
-    redirect_to 遷移したいページ
+    redirect_to new_order_path #遷移したいページ
   end
   @cart_products = current_customer.cart_products.all
-  @total = @cart_products.inject(0) { |sum, item| sum + item.sum_price }
+  @total = @cart_products.inject(0) { |sum, item| sum + item.sum_of_price }
   end
 
 
