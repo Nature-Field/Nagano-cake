@@ -1,0 +1,6 @@
+<h2>search for "<%= @search_word %>"</h2><br>
+<% if admin_signed_in? %>
+  <%= render 'admin/products/index' , products: @records %>
+<% else %>
+  <%= render 'customer/products/index' , products: @records %>
+<% end %>
