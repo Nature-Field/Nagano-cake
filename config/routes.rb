@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
   }
+  
+  #商品検索フォーム用
+  get 'search' , to:'searches#search'
 
   #customer側↓
 
