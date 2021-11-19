@@ -7,5 +7,9 @@ class ShippingAddress < ApplicationRecord
   validates   :postal_code, presence: true, numericality: {only_integer: true}, length: {is: 7}
   validates   :address, presence: true
 
+  def full_address
+    '〒' + postal_code + ' ' + address + ' ' + name
+  end
+
 end
 

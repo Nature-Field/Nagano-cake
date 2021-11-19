@@ -25,8 +25,16 @@
     <table class="table table-bordered col-md-2 offset-1">
       <tbody>
         <tr>
+          <td>送料</td>
+          <td><%= @order.cost.to_s(:delimited) %></td>
+        </tr>
+        <tr>
+          <td>商品合計</td>
+          <td><%= @total.to_s(:delimited) %></td> <!-- 商品の合計金額 -->
+        </tr>
+        <tr>
           <td><p>ご請求金額</p></td>
-          <td><%= @total.to_s(:delimited) %></td> <!-- お買い物の合計金額 -->
+          <td><%= @order.total_price.to_s(:delimited) %></td> <!-- 商品合計+送料 -->
         </tr>
       </tbody>
     </table>
@@ -40,7 +48,9 @@
       <%= form_with model: @order, url: { action: :create }, local: true do |f| %>
         <%= f.hidden_field :name %>
         <%= f.hidden_field :address %>
+        <%= f.hidden_field :postal_code %>
         <%= f.hidden_field :total_price, value: @total %>
+        <%= f.hidden_field :cost, value: @order.cost %>
         <%= f.submit "注文を確定する" %>
       <% end %>
 
