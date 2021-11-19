@@ -1,5 +1,6 @@
 <h2>ショッピングカート</h2>
-<%= link_to "カートを空にする", cart_products_destroy_all_path, method: :delete  %>
+<%#<%= link_to "カートを空にする", cart_products_destroy_all_path, method: :delete  %>
+<%= link_to "カートを空にする", cart_products_destroy_all_cart_products_path, method: :delete  %>
 <table>
   <tr>
     <td>商品名</td>
