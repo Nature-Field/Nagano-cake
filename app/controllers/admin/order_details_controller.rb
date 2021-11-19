@@ -13,7 +13,6 @@ class Admin::OrderDetailsController < ApplicationController
 
   private
 
-
   def order_details_params
     params.require(:order_detail).permit(:create_status)
   end
