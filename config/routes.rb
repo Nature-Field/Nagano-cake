@@ -13,6 +13,9 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
 
+  #商品検索フォーム用
+  get 'search' , to:'searches#search'
+
   #customer側↓
 
   scope module: :customer do
@@ -33,20 +36,24 @@ Rails.application.routes.draw do
     resources :shipping_addresses, only: [:index, :create, :edit, :update, :destroy]
 
     #注文
-    resources :orders, only: [:index, :show, :create, :new]
-      get 'orders/compleat' => 'orders#compleat'
-      post 'orders/confirm' => 'orders#confirm'
+    resources :orders, only: [:index, :show, :create, :new] do
+      get 'complete',   on: :collection
+      post 'confirm', on: :collection
+    end
 
     #カート商品
-    resources :cart_products, only:[:index, :destroy, :edit, :update, :create]
-      delete 'cart_products/destroy_all' => 'cart_products#destroy_all'
+    resources :cart_products, only:[:index, :destroy, :edit, :update, :create] do
+      collection do
+        delete 'cart_products/destroy_all' => 'cart_products#destroy_all'
+      end
+    end
   end
 
   #admin側↓
 
   namespace :admin do
     #トップページのルーティング
-    get 'admin' => 'homes#top'
+    get '/' => 'homes#top'
 
     #カスタマー
     resources :customers, only:[:index, :show, :edit, :update]

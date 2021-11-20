@@ -4,7 +4,7 @@
   <div>商品画像　<%= f.attachment_field :image %></div>
   <div>商品名　<%= f.text_field :name %></div>
   <div>商品説明　<%= f.text_area :explanation %></div>
-  <div>ジャンル　<%= f.collection_select :genre_id, @genres, :id, :name %></div>
+  <div>ジャンル　<%= f.collection_select :genre_id, Genre.all, :id, :name %></div>
   <div>税抜価格　<%= f.number_field :price %></div>
   <div>販売ステータス　<%= f.radio_button :is_active, "true" %>販売中　<%= f.radio_button :is_active, "false" %>販売停止中</div>
   <div><%= f.submit '変更を保存'%></div>
