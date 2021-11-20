@@ -16,10 +16,12 @@ class Order < ApplicationRecord
   validates :payment_way, presence: true
   validates :status, presence: true
 
-  enum payment_way: {credit_card: 0, transfer: 1}
-  #enum status: {入金待ち: 0, 入金確認: 1,  製作中: 2, 発送準備中: 3, 発送済み: 4}
+  enum payment_way: { credit_card: 0, transfer: 1 }
+  enum status: { waiting: 0, confirmed: 1, working: 2, preparing: 3, shipped: 4 }
   attr_accessor :address_number
-
   attr_accessor :address_id
 
+  def full_name
+    customer.last_name + " " + customer.first_name
+  end
 end
