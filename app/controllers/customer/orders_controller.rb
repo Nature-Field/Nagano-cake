@@ -59,10 +59,10 @@ class Customer::OrdersController < ApplicationController
       render :new
     end
   elsif params[:order][:address_number] == "3"
-    if @order.save
-    else
+    if @order.valid? == false
       render :new
     end
+
   else
     redirect_to new_order_path #遷移したいページ
   end
