@@ -6,9 +6,14 @@ class Customer::OrdersController < ApplicationController
   def show
   end
 
+  def new
+    @order = Order.new
+  end
+
   def create
     cart_products = current_customer.cart_products.all
     @order = current_customer.orders.new(order_params)
+byebug
     if @order.save
       cart_products.each do |cart|
         order_detail = OrdeDetail.new
@@ -30,16 +35,14 @@ class Customer::OrdersController < ApplicationController
   def compleat
   end
 
-  def new
-    @order = Order.new
-  end
+
 
   def confirm
 
   @order = Order.new(order_params)
 
   if params[:order][:address_number] == "1"
-    @order.name = current_customer.last_name.to_s + current_customer.first_name.to_s
+    @order.name = current_customer.fullname
     @order.address = current_customer.address
     @order.postal_code = current_customer.postal_code
   elsif params[:order][:address_number] == "2"
