@@ -6,6 +6,6 @@ class SearchesController < ApplicationController
   
   private
   def search_for(search_word)
-    Product.where(name: search_word)
+    Product.where('name LIKE ?', '%'+search_word+'%')
   end
 end

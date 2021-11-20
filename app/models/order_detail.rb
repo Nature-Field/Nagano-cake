@@ -9,5 +9,4 @@ class OrderDetail < ApplicationRecord
   validates :quantity, presence: true
   validates :create_status, presence: true
 
-
 end
