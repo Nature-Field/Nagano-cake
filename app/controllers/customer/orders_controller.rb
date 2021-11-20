@@ -12,36 +12,23 @@ class Customer::OrdersController < ApplicationController
   end
 
   def create
-    cart_products = current_customer.cart_products.all
-    @order = current_customer.orders.new(order_params)
-<<<<<<< HEAD
-byebug
-=======
-    @order.cost = 800
-    #@order.total_price = (合計金額 + 送料)→変数決まり次第、修正してください
-    @order.total_price = (0 + 800)
+    @order = Order.new(order_params)
+    if params[:order][:address_number] == 1
+      @order.address = current_customer.address
+      @order.postal_code = current_customer.postal_code
+      @order.name = current_customer.fullname
 
->>>>>>> origin/develop
-    if @order.save
-      cart_products.each do |cart|
-        order_detail = OrderDetail.new
-        order_detail.product_id = cart.product_id
-        order_detail.order_id = @order.id
-        order_detail.quantity = cart.quantity
-        order_detail.price = cart.product.price
-<<<<<<< HEAD
-        #order_detail.create_status =
-=======
+    elsif params[:order][:address_number] == 2
 
->>>>>>> origin/develop
-        order_detail.save
-      end
-      redirect_to orders_confirm_path
-      cart_products.destroy_all
-    else
-      @order = Order.new(order_params)
-      render :new
+    elsif params[:order][:address_number] == 3
+
+
     end
+      @order.customer_id = current_customer.id
+      @order.total_price = 300 + 800
+      @order.save
+
+    redirect_to orders_confirm_path
   end
 
   def compleat
@@ -50,20 +37,14 @@ byebug
 
 
   def confirm
-<<<<<<< HEAD
-
-  @order = Order.new(order_params)
-
-=======
     @order = Order.new(order_params)
->>>>>>> origin/develop
   if params[:order][:address_number] == "1"
     @order.name = current_customer.fullname
     @order.address = current_customer.address
     @order.postal_code = current_customer.postal_code
   elsif params[:order][:address_number] == "2"
     if Address.exists?(name: params[:order][:registered])
-# registered は viwe で定義しています
+
       @order.name = Address.find(params[:order][:registered]).name
       @order.address = Address.find(params[:order][:registered]).address
     else
@@ -80,27 +61,17 @@ byebug
   end
   @cart_products = current_customer.cart_products.all
   @total = @cart_products.inject(0) { |sum, item| sum + item.sum_price }
-<<<<<<< HEAD
+
 
   end
 
 
-  private
-
-=======
-  end
-
 
   private
 
->>>>>>> origin/develop
+
   def order_params
-    params.require(:order).permit(:name, :address, :total_price, :payment_way, :postal_code, :address_number, :registered)
+    params.require(:order).permit(:name, :address, :total_price, :payment_way, :postal_code, :address_number, :cost)
   end
 
-
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/develop
 end
