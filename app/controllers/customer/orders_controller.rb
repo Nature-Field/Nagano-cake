@@ -37,12 +37,11 @@ class Customer::OrdersController < ApplicationController
   end
 
   def new
-
+    @order = Order.new
     carts = current_customer.cart_products
-       unless carts.present?
-         redirect_to products_path
-       end
-       @order = Order.new
+    unless carts.present?
+      redirect_to products_path
+    end
   end
 
   def confirm
