@@ -3,10 +3,13 @@ class Customer::OrdersController < ApplicationController
 
   def index
     @orders = current_customer.orders.reverse_order
-
   end
 
   def show
+    @order = Order.find(params[:id])
+    @order.cost = 800 #送料
+    @order_products_price = (@order.total_price.to_i - @order.cost)
+    @order_details = @order.order_details
   end
 
   def create
