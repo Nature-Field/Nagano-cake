@@ -1,0 +1,29 @@
+<h2>注文履歴一覧</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>購入日時</th>
+      <th>購入者</th>
+      <th>注文個数</th>
+      <th>注文ステータス</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @orders.each do |o| %>
+      <% @total_quantity = 0 %>
+      <% order_details = OrderDetail.where(order_id: o.id) %>
+      <% order_details.each do |order_d| %>
+      <% @total_quantity += order_d.quantity %>
+      <% end %>
+    <tr>
+      <td><%= link_to admin_order_path(o) do %>
+          <%= o.created_at.strftime("%Y/%m/%d %T") %><% end %></td>
+      <td><%= o.full_name %></td>
+      <td><%= @total_quantity %></td>
+      <td><%= o.status %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= paginate @orders %>
