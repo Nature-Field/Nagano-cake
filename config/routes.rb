@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
   }
-  
+
   #商品検索フォーム用
   get 'search' , to:'searches#search'
 
@@ -36,9 +36,10 @@ Rails.application.routes.draw do
     resources :shipping_addresses, only: [:index, :create, :edit, :update, :destroy]
 
     #注文
-    resources :orders, only: [:index, :show, :create, :new]
-      get 'orders/compleat' => 'orders#compleat'
-      post 'orders/confirm' => 'orders#confirm'
+    resources :orders, only: [:index, :show, :create, :new] do
+      get 'complete',   on: :collection
+      post 'confirm', on: :collection
+    end
 
     #カート商品
     resources :cart_products, only:[:index, :destroy, :edit, :update, :create] do

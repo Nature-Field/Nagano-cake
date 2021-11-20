@@ -16,9 +16,7 @@ class Order < ApplicationRecord
 
   enum payment_way: {credit_card: 0, transfer: 1}
   attr_accessor :address_number
-  attr_accessor :registered
 
-  def full_name
-    customer.last_name + " " + customer.first_name
-  end
+  attr_accessor :address_id
+
 end
