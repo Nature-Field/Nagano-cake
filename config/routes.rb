@@ -36,8 +36,8 @@ Rails.application.routes.draw do
     resources :shipping_addresses, only: [:index, :create, :edit, :update, :destroy]
 
     #注文
-    resources :orders, only: [:index, :create, :new] do
-      get 'compleat',   on: :collection
+    resources :orders, only: [:index, :show, :create, :new] do
+      get 'complete',   on: :collection
       post 'confirm', on: :collection
     end
 
