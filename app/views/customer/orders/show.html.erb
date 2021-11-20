@@ -55,11 +55,11 @@
         </tr>
       </thead>
       <tbody>
-        <% @order_details.each do |order_detail| %>
+        <% @order_details.each do |order| %>
           <tr>
-            <td><%= order_detail.product.name %></td>
-            <td><%= order_detail.product.price %></td>
-            <td><%= order_detail.quantity %></td>
+            <td><%= order.product.name %></td>
+            <td><%= order.product.price %></td>
+            <td><%= order.quantity %></td>
             <td>      </td>
           </tr>
         <% end %>
