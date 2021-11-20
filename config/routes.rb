@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
   }
+  
+  #商品検索フォーム用
+  get 'search' , to:'searches#search'
 
   #customer側↓
 
@@ -38,15 +41,18 @@ Rails.application.routes.draw do
       post 'orders/confirm' => 'orders#confirm'
 
     #カート商品
-    resources :cart_products, only:[:index, :destroy, :edit, :update, :create]
-      delete 'cart_products/destroy_all' => 'cart_products#destroy_all'
+    resources :cart_products, only:[:index, :destroy, :edit, :update, :create] do
+      collection do
+        delete 'cart_products/destroy_all' => 'cart_products#destroy_all'
+      end
+    end
   end
 
   #admin側↓
 
   namespace :admin do
     #トップページのルーティング
-    get 'admin' => 'homes#top'
+    get '/' => 'homes#top'
 
     #カスタマー
     resources :customers, only:[:index, :show, :edit, :update]
