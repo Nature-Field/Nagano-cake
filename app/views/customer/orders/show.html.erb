@@ -60,7 +60,7 @@
             <td><%= order_detail.product.name %></td>
             <td><%= order_detail.product.price %></td>
             <td><%= order_detail.quantity %></td>
-            <td>      </td>
+            <td><%= (order_detail.quantity * order_detail.product.price).to_s(:delimited) %></td>
           </tr>
         <% end %>
       </tbody>
