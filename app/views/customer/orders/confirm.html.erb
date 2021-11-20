@@ -1,7 +1,8 @@
 <div class="container mt-4">
-
+  <h3>注文情報履歴</h3>
   <div class="row">
-    <table class="table table-bordered col-md-6">
+    <div class="col-8">
+    <table class="table table-bordered">
       <thead>
         <tr>
           <td>商品名</td>
@@ -13,7 +14,8 @@
       <tbody>
         <% @cart_products.each do |cart| %>
           <tr>
-            <td><%= cart.product.name %></td> <!-- 商品名 -->
+            <td><%= attachment_image_tag(cart.product, :image, :fill, 50, 50 , size: "60x60") %>
+                <%= cart.product.name %></td> <!-- 商品名 -->
             <td><%= (cart.product.price).to_s(:delimited) %></td>　<!-- 金額 -->
             <td><%= cart.quantity %></td> <!-- 個数 -->
             <td><%= (cart.product.price*cart.quantity).to_s(:delimited) %></td> <!-- 小計 -->
@@ -21,8 +23,9 @@
         <% end %>
       </tbody>
     </table>
-
-    <table class="table table-bordered col-md-2 offset-1">
+    </div>
+    <div class="col-3 offset-1">
+    <table class="table table-bordered">
       <tbody>
         <tr>
           <td>送料</td>
@@ -38,11 +41,17 @@
         </tr>
       </tbody>
     </table>
+    </div>
   </div>
 
-
-      <p>お届け先</p>
-      <%= @order.address %>
+   <div class="row">
+     <p class="col-lg-1 align-self-start">支払方法</p>
+     <div class="col-lg-10 align-self-center"><%= @order.payment_way %></div>
+   </div>
+   <div class="row">
+      <p class="col-lg-1 align-self-start ">お届け先</p>
+      <div class="col-lg-10 align-self-center"><%= @order.address %></div>
+    </div>
 
       <!-- ユーザーには注文確定ボタンだけ表示します -->
       <%= form_with model: @order, url: { action: :create }, local: true do |f| %>
