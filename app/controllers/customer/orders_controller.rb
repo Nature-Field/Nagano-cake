@@ -50,10 +50,14 @@ class Customer::OrdersController < ApplicationController
     @order.address = current_customer.address
     @order.postal_code = current_customer.postal_code
   elsif params[:order][:address_number] == "2"
-    order_address = ShippingAddress.find(params[:order][:address_id])
+    if ShippingAddress.where(params[:order][:address_id]).exists?
+      order_address = ShippingAddress.find(params[:order][:address_id])
       @order.postal_code = order_address.postal_code
       @order.address     = order_address.address
       @order.name        = order_address.name
+    else
+      render :new
+    end
   elsif params[:order][:address_number] == "3"
     if @order.save
     else
@@ -69,7 +73,7 @@ class Customer::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:customer_id, :name, :address, :total_price, :payment_way, :postal_code, :address, :cost, :registered)
+    params.require(:order).permit(:customer_id, :name, :address, :total_price, :payment_way, :postal_code, :address, :cost)
   end
 
 
