@@ -4,6 +4,7 @@ class Order < ApplicationRecord
   belongs_to :customer
   has_many :shipping_addresses, through: :customers
   has_many :products, through: :order_details
+  has_many :cart_products, through: :customer
 
 
   validates :customer_id, presence: true
