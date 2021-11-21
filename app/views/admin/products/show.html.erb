@@ -1,12 +1,28 @@
-<h2>商品詳細</h2>
+<div class="container">
 
-<%# fileサイズもっと大きくてもいいかも %>
-<%= attachment_image_tag @product, :image, :fill,120,120, fallback:"noimage_product.jpg", size:'100x100' %>
-<table>
-  <tr><th>商品名</th><td><%= @product.name %></td></tr>
-  <tr><th>商品説明</th><td><%= @product.explanation %></td></tr>
-  <tr><th>ジャンル</th><td><%= @product.genre.name %></td></tr>
-  <tr><th>税込価格<br>(税抜価格)</th><td><%= (@product.price * 1.1).floor %> (<%= @product.price %>)</td></tr>
-  <tr><th>販売ステータス</th><td><%= @product.is_active ? "販売中" : "販売停止中" %></td></tr>
-  <tr><th><%= link_to "編集する", edit_admin_product_path(@product) %></td></tr>
-</table>
+  <div class="row">
+    <div class="my-3 h5 text-center theme col-2 offset-md-1">商品詳細</div>
+  </div>
+
+  <div class="row">
+    <div class="mt-5 col-4">
+      <%= attachment_image_tag @product, :image, fallback:"noimage_product.jpg", size:'300x300' %>
+    </div>
+
+    <table class="table table-borderless mt-5 ml-3 col-7">
+      <tr><td style="width: 5%">商品名</td>
+        <td style="width: 15%"><%= @product.name %></td></tr>
+      <tr><td>商品説明</td>
+        <td><%= @product.explanation %></td></tr>
+      <tr><td>ジャンル</td>
+        <td><%= @product.genre.name %></td></tr>
+      <tr><td>税込価格<br>(税抜価格)</td>
+        <td><%= (@product.price * 1.1).floor %> (<%= @product.price %>)</td></tr>
+      <tr><td>販売ステータス</td>
+        <td style="font-size: 20px; font-weight: bold" class=<%= @product.is_active ? "sale" : "sold" %>>
+          <%= @product.is_active ? "販売中" : "販売停止中" %></td></tr>
+    </table>
+      <%= link_to "編集する", edit_admin_product_path(@product), class:"btn btn-lg btn-success mt-2 offset-md-6" %>
+
+  </div>
+</div>
