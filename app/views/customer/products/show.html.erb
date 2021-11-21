@@ -3,7 +3,7 @@
   <div class="row col-12">
     <div class="col-md-2">ジャンル検索</div>
     <div class="col-md-2 offset-1">
-      <%= attachment_image_tag(@product, :image, size: "300x200") %>
+      <%= attachment_image_tag @product, :image, format: 'jpeg', fallback: "no_image.jpg", size: "300x200" %>
     </div>
     <div class="col-md-5 offset-2">
       <h2><%= @product.name %></h2><br>

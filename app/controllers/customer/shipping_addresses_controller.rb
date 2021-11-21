@@ -3,14 +3,14 @@ class Customer::ShippingAddressesController < ApplicationController
 
   def index
     @shipping_address = ShippingAddress.new
-    @addresses = ShippingAddress.includes(:customer)
+    @addresses = current_customer.shipping_addresses
 
   end
 
   def create
     @shipping_address = ShippingAddress.new(shipping_address_params)
     if @shipping_address.save
-      redirect_to shipping_addresses_path, notice: "You have created book successfully."
+      redirect_to shipping_addresses_path, notice: "You have created address successfully."
     else @addresses = ShippingAddress.includes(:customer)
       render 'index'
     end
@@ -23,7 +23,7 @@ class Customer::ShippingAddressesController < ApplicationController
   def update
     @shipping_address = ShippingAddress.find(params[:id])
     if @shipping_address.update(shipping_address_params)
-      redirect_to shipping_addresses_path
+      redirect_to shipping_addresses_path, notice: "You have updated address successfully."
     else
       render "edit"
     end
