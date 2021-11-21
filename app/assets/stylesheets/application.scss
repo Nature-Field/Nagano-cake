@@ -27,3 +27,8 @@
   font-size: 14px;
   color: red;
 }
+
+/*デフォルトエラーメッセージが出た際、レイアウトが崩れないCSSを記述*/
+.field_with_errors {
+  display: contents;
+}
