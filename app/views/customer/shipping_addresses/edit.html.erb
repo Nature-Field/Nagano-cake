@@ -9,7 +9,7 @@
       <%= render "customer/shared/error_messages", resource: @shipping_address %>
       <div class="mb-2">
         <%= f.label :郵便番号（ハイフンなし）, class:"control-label col-3" %>
-        <%= f.text_field :postal_code, autofocus: true %>
+        <%= f.text_field :postal_code, autofocus: true, class:"col-2" %>
       </div>
       <div class="mb-2">
         <%= f.label :住所, class:"control-label col-3" %>
@@ -17,7 +17,7 @@
       </div>
       <div>
         <%= f.label :宛名, class:"control-label col-3" %>
-        <%= f.text_field :name, autofocus: true %>
+        <%= f.text_field :name, autofocus: true, class:"col-2" %>
         <%= f.hidden_field :customer_id, :value => current_customer.id %>
         <%= f.submit "変更内容を保存", class:"btn btn-sm btn-success offset-3" %>
       </div>
