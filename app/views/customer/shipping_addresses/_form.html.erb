@@ -1,12 +1,17 @@
-
 <%= form_with model: shipping_address, local:true do |f| %>
-<%= render "customer/shared/error_messages", resource: shipping_address %>
-  <p>郵便番号(ハイフンなし)</p>
-  <%= f.text_field :postal_code %>
-  <p>住所</p>
-  <%= f.text_field :address %>
-  <p>宛名</p>
-  <%= f.text_field :name %>
-  <%= f.hidden_field :customer_id, :value => current_customer.id %>
-  <%= f.submit "新規登録" %>
+  <%= render "customer/shared/error_messages", resource: shipping_address %>
+  <div class="mb-2">
+    <%= f.label :郵便番号（ハイフンなし）, class:"control-label col-3" %>
+    <%= f.text_field :postal_code, autofocus: true %>
+  </div>
+  <div class="mb-2">
+    <%= f.label :住所, class:"control-label col-3" %>
+    <%= f.text_field :address, autofocus: true, class:"col-5" %>
+  </div>
+  <div>
+    <%= f.label :宛名, class:"control-label col-3" %>
+    <%= f.text_field :name, autofocus: true %>
+    <%= f.hidden_field :customer_id, :value => current_customer.id %>
+    <%= f.submit "新規登録", class:"btn btn-sm btn-success col-1 offset-3" %>
+  </div>
 <% end %>
