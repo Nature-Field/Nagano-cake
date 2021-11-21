@@ -4,7 +4,7 @@ class Customer::CartProductsController < ApplicationController
   def index
     @cart_products = current_customer.cart_products
     # カートに入ってる商品の合計金額
-    @total = @cart_products.inject(0) { |sum, product| sum + product.sum_of_price }
+    @total = @cart_products.inject(0) { |sum, product| sum + (product.sum_of_price*1.1).floor }
   end
 
   def destroy_all

@@ -1,5 +1,5 @@
 <div class="container mt-4">
-  <h3>注文情報履歴</h3>
+  <h3>注文情報確認</h3>
   <div class="row">
     <div class="col-8">
     <table class="table table-bordered">
@@ -16,9 +16,9 @@
           <tr>
             <td><%= attachment_image_tag(cart.product, :image, :fill, 50, 50 , size: "60x60") %>
                 <%= cart.product.name %></td> <!-- 商品名 -->
-            <td><%= (cart.product.price).to_s(:delimited) %></td>　<!-- 金額 -->
+            <td><%= ((cart.product.price*1.1).floor).to_s(:delimited) %></td>　<!-- 金額 -->
             <td><%= cart.quantity %></td> <!-- 個数 -->
-            <td><%= (cart.product.price*cart.quantity).to_s(:delimited) %></td> <!-- 小計 -->
+            <td><%= ((cart.product.price*1.1 *cart.quantity).floor).to_s(:delimited) %></td> <!-- 小計 -->
           </tr>
         <% end %>
       </tbody>
@@ -46,7 +46,7 @@
 
    <div class="row">
      <p class="col-lg-1 align-self-start">支払方法</p>
-     <div class="col-lg-10 align-self-center"><%= @order.payment_way %></div>
+     <div class="col-lg-10 align-self-center"><%= @order.payment_way_i18n %></div>
    </div>
    <div class="row">
       <p class="col-lg-1 align-self-start ">お届け先</p>
@@ -54,13 +54,14 @@
     </div>
 
       <!-- ユーザーには注文確定ボタンだけ表示します -->
+      <div class="row justify-content-center">
       <%= form_with model: @order, url: { action: :create }, local: true do |f| %>
         <%= f.hidden_field :name %>
         <%= f.hidden_field :address %>
         <%= f.hidden_field :postal_code %>
         <%= f.hidden_field :total_price, value: @total %>
         <%= f.hidden_field :cost, value: @order.cost %>
-        <%= f.submit "注文を確定する" %>
+        <%= f.submit "注文を確定する", class: "btn btn-success" %>
       <% end %>
-
+      </div>
 </div>

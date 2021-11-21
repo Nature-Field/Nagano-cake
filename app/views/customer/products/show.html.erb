@@ -9,15 +9,15 @@
       <h2><%= @product.name %></h2><br>
       <p><%= @product.explanation %></p>
       <div>
-        <h3>￥<%=@product.price %><font size="3">（税込）</font></h3>
+        <h3>￥<%=(@product.price * 1.1).floor %><font size="3">（税込）</font></h3>
       </div>
 
       <% if customer_signed_in? %>
         <%= form_with model: @cart_product,local:true do |f| %>
-          <%= f.select :quantity, [1, 2, 3, 4, 5, 6, 7, 8, 9], {include_blank: '個数選択'} %>
+          <%= f.select :quantity, [*(1..10)], {include_blank: '個数選択'} %>
           <%= f.hidden_field :customer_id, :value => current_customer.id %>
           <%= f.hidden_field :product_id, :value => @product.id %>
-            <%= f.submit "カートに入れる", class:"ml-5 mt-4" %>
+            <%= f.submit "カートに入れる", class:"ml-5 mt-4 btn btn-success" %>
         <% end %>
       <% end %>
     </div>
