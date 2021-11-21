@@ -17,7 +17,7 @@
           <%= f.select :quantity, [*(1..10)], {include_blank: '個数選択'} %>
           <%= f.hidden_field :customer_id, :value => current_customer.id %>
           <%= f.hidden_field :product_id, :value => @product.id %>
-            <%= f.submit "カートに入れる", class:"ml-5 mt-4" %>
+            <%= f.submit "カートに入れる", class:"ml-5 mt-4 btn btn-success" %>
         <% end %>
       <% end %>
     </div>

@@ -1,12 +1,17 @@
-
 <%= form_with model: shipping_address, local:true do |f| %>
 <%= render "customer/shared/error_messages", resource: shipping_address %>
-  <p>郵便番号(ハイフンなし)</p>
-  <%= f.text_field :postal_code %>
-  <p>住所</p>
-  <%= f.text_field :address %>
-  <p>宛名</p>
-  <%= f.text_field :name %>
+<div class="row">
+  <p class="col-2">郵便番号(ハイフンなし)</p>
+  <div class="col-4"><%= f.text_field :postal_code, :placeholder => "0000000" %></div>
+</div>
+<div class="row">
+  <p class="col-2">住所</p>
+  <div class="col"><%= f.text_field :address, :size=>"60", :placeholder => "東京都渋谷区代々木神園町0-0" %></div>
+</div>
+<div class="row">
+  <p class="col-2">宛名</p>
+  <div class="col-5"><%= f.text_field :name, :placeholder => "令和道子" %></div>
   <%= f.hidden_field :customer_id, :value => current_customer.id %>
-  <%= f.submit "新規登録" %>
-<% end %>
+  <div class="col-4"><%= f.submit "新規登録", class: "btn btn-success" %></div>
+</div>
+ <% end %>

@@ -1,25 +1,29 @@
+<div class="content">
 <div>
   <h2>配送先登録/一覧</h2>
     <%= render 'customer/shipping_addresses/form', shipping_address: @shipping_address %>
 </div>
 
-<div>
-  <table>
+<div class="row">
+  <div class="col-7">
+  <table class="table table-bordered">
     <tr>
-      <td>郵便番号</td>
-      <td>住所</td>
-      <td>宛名</td>
-      <td></td>
+      <td class="col-1">郵便番号</td>
+      <td class="col-4">住所</td>
+      <td class="col-2">宛名</td>
+      <td class="col-3"></td>
     </tr>
     <% @addresses.each do |address| %>
     <tr>
       <td><%= address.postal_code %></td>
       <td><%= address.address %></td>
       <td><%= address.name %></td>
-      <td><%= link_to "編集する", edit_shipping_address_path(address) %>
-          <%= link_to "削除する", shipping_address_path(address), method: :delete %>
+      <td><%= link_to "編集する", edit_shipping_address_path(address), class: "btn btn-success" %>
+          <%= link_to "削除する", shipping_address_path(address), class: "btn btn-danger", method: :delete %>
       </td>
     </tr>
     <% end %>
   </table>
+  </div>
+</div>
 </div>
