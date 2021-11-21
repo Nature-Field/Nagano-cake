@@ -19,6 +19,7 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
               <% if customer_signed_in? %>
+                <p>ようこそ、<%= @customer_fullname %>さん！</p>
                 <li><%= link_to "マイページ", customers_my_page_path, class: "btn btn-sm btn btn-outline-secondary" %></li>
                 <li><%= link_to "商品一覧", products_path, class: "btn btn-sm btn btn-outline-secondary" %></li>
                 <li><%= link_to "カート", cart_products_path, class: "btn btn-sm btn btn-outline-secondary" %></li>
