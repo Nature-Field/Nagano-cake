@@ -16,7 +16,7 @@ class Customer::OrdersController < ApplicationController
     cart_products = current_customer.cart_products.all
     @order = current_customer.orders.new(order_params)
     @cart_products_all = current_customer.cart_products.all
-    @total = @cart_products_all.inject(0) { |sum, item| sum + item.sum_of_price } # カートに入ってる商品の合計金額
+    @total = @cart_products_all.inject(0) { |sum, item| sum + (item.sum_of_price*1.1).floor } # カートに入ってる商品の合計金額
     @order.cost = 800 #送料
     @order.total_price = (@total.to_i + @order.cost)
     if @order.save
@@ -50,7 +50,7 @@ class Customer::OrdersController < ApplicationController
   def confirm
     @order = current_customer.orders.new(order_params)
     @cart_products = current_customer.cart_products.all
-    @total = @cart_products.inject(0) { |sum, item| sum + item.sum_of_price }
+    @total = @cart_products.inject(0) { |sum, item| sum + (item.sum_of_price*1.1).floor }
     @order.cost = 800
     @order.total_price = (@total.to_i + @order.cost)
   if params[:order][:address_number] == "1"
@@ -79,6 +79,7 @@ class Customer::OrdersController < ApplicationController
 
 
   private
+
 
   def order_params
     params.require(:order).permit(:customer_id, :name, :address, :total_price, :payment_way, :postal_code, :address, :cost, :address_id, :address_number)

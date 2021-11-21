@@ -21,5 +21,4 @@ class Order < ApplicationRecord
   attr_accessor :address_number
 
   attr_accessor :address_id
-
 end
