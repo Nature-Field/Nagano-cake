@@ -1,57 +1,68 @@
-<div class="container mt-5 mb-5">
-  <h1>注文履歴詳細</h1>
+<div class="container">
+  <div class="row">
+    <div class="h5 my-3 text-center theme">注文履歴詳細</div>
+  </div>
 
-  <p>注文情報</p>
+    <div class="row">
+    <div class="col-md-7 pl-0">
+      <p class="font-weight-bold">注文情報</p>
     <table class="table table-bordered">
       <tbody>
         <tr>
-          <td>注文日</td>
+          <td class="col-md-2 theme">注文日</td>
           <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
         </tr>
         <tr>
-          <td>配送先</td>
+          <td class="theme">配送先</td>
           <td><%= @order.postal_code %></br>
               <%= @order.address %></br>
               <%= @order.name %>
           </td>
         </tr>
         <tr>
-          <td>支払方法</td>
+          <td class="theme">支払方法</td>
           <td><%= @order.payment_way_i18n %></td>
         </tr>
         <tr>
-          <td>ステータス</td>
+          <td class="theme">ステータス</td>
           <td><%= @order.status_i18n %></td>
         </tr>
       </tbody>
     </table>
 
-    <p>請求情報</p>
+    </div>
+    <div class="col-3">
+      <p class="font-weight-bold">請求情報</p>
     <table class="table table-bordered">
       <tbody>
         <tr>
-          <td>商品合計</td>
-          <td><%= @order_products_price %></td>
+          <td class="col-md-4 theme">商品合計</td>
+          <td class="align-middle col-md-2"><%= @order_products_price %></td>
         </tr>
         <tr>
-          <td>配送料</td>
-          <td><%= @order.cost %></td>
+          <td class="theme">配送料</td>
+          <td class="align-middle"><%= @order.cost %></td>
         </tr>
         <tr>
-          <td>ご請求金額</td>
-          <td><%= @order.total_price.to_s(:delimited) %></td>
+          <td class="theme">ご請求金額</td>
+          <td class="align-middle"><%= @order.total_price.to_s(:delimited) %></td>
         </tr>
       </tbody>
     </table>
+    </div>
 
-    <p>注文内容</p>
+  </div>
+  <div class="row">
+    <div class="col-md-8 pl-0">
+        <p class="font-weight-bold">注文内容</p>
+
     <table class="table table-bordered">
       <thead>
         <tr>
-          <td>商品</td>
-          <td>単価（税込み）</td>
-          <td>個数</td>
-          <td>小計</td>
+          <td class="col-md-6 theme">商品</td>
+          <td class="col-md-2 theme">単価（税込）</td>
+          <td class="col-md-1 theme">個数</td>
+          <td class="col-md-1 theme">小計</td>
         </tr>
       </thead>
       <tbody>
@@ -65,6 +76,6 @@
         <% end %>
       </tbody>
     </table>
-
-
+    </div>
+  </div>
 </div>
