@@ -30,7 +30,11 @@ Rails.application.routes.draw do
       patch 'customers/withdraw' => 'customers#withdraw'
 
     #商品
-    resources :products, only: [:index, :show]
+    resources :products, only: [:index, :show] do
+      collection do
+        get 'genre_search' => 'products#search'
+      end
+    end
 
     #配送先
     resources :shipping_addresses, only: [:index, :create, :edit, :update, :destroy]
