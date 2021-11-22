@@ -11,6 +11,9 @@ class Customer::ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id])
     @cart_product = CartProduct.new
+    @genres = Genre.all
+    @q = Product.ransack(params[:q])
+    @products_genre = @q.result(distinct: true)
   end
   
   def search
