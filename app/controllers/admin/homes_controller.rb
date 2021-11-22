@@ -1,4 +1,6 @@
 class Admin::HomesController < ApplicationController
+  before_action :authenticate_admin!
+  
   def top
     @orders = Order.page(params[:page]).per(10).reverse_order
     #customer/showから偏移した場合は、:id keyを受け取ってcustomerの注文履歴だけを表示する
