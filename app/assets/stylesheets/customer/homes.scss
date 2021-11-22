@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+//トップ画面のCSS
 .topimage {
     display: flex;
     text-align: center;
@@ -25,4 +26,28 @@
 .toptitle {
     text-align: center;
     font-family: 'Corben', cursive;
+}
+
+//アバウト画面のCSS
+#box{
+  margin: 0 auto;
+  width: 600px;
+　background-size: contain;
+  height: 300px;
+}
+.about1 {
+  background-image: url(about1.jpg);
+  border-radius: 10px;
+}
+.about2 {
+  background-image: url(about2.jpg);
+  border-radius: 10px;
+}
+.about3 {
+  background-image: url(about3.jpg);
+  border-radius: 10px;
+}
+.about4 {
+  background-image: url(about4.jpg);
+  border-radius: 10px;
 }
