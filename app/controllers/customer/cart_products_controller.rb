@@ -28,7 +28,6 @@ class Customer::CartProductsController < ApplicationController
 
 
   def create
-      CartProduct.create(customer_id: current_customer.id, quantity: params[:quantity], product_id: params[:product_id])
       @cart_products = current_customer.cart_products
       @cart_product = CartProduct.new(cart_product_params)
       if current_customer.cart_products.find_by(product_id: params[:cart_product][:product_id]).present?
