@@ -8,5 +8,5 @@
 
 Admin.create!(
     email: "NaganoCake@gmail.com" ,
-    encrypted_password: "NaganoCake"
+    password: "NaganoCake"
     )
