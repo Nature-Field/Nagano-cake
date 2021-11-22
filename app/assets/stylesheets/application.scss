@@ -32,3 +32,26 @@
 .field_with_errors {
   display: contents;
 }
+
+//テーブルクラス内のリンク表記変更：カスタマー側で影響がでないか注意！
+td > a{
+  color: black;
+  text-decoration: underline;
+}
+
+//kaminariの中央寄せ
+.pagination {
+  justify-content: center;
+}
+
+//販売ステータス
+.sale{
+  color: green;
+}
+.sold{
+  color: gray;
+<<<<<<< HEAD
+}
+=======
+}
+>>>>>>> e7f1a87 ([add]admin_product_index_css)
