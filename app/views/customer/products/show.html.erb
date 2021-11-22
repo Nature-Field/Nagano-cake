@@ -1,28 +1,35 @@
-
 <div class="container mt-5">
+  <div class="row">
 
-  <div class="row col-12">
-    <div class="col-md-2">ジャンル検索</div>
-    <%#= render 'customer/products/genre_search_form', genres: @genres %>
-    <div class="col-md-2 offset-1">
-      <%= attachment_image_tag @product, :image, format: 'jpeg', fallback: "no_image.jpg", size: "300x200" %>
+    <!-- サイドバー -->
+    <div class="col-md-3">
+      <h3>ジャンル検索</h3>
+      <%= render 'customer/products/genre_search_form', genres: @genres %>
     </div>
-    <div class="col-md-5 offset-2">
-      <h2><%= @product.name %></h2><br>
-      <p><%= @product.explanation %></p>
-      <div>
-        <h3>￥<%=(@product.price * 1.1).floor %><font size="3">（税込）</font></h3>
+
+    <!-- 商品画像・名前・説明 -->
+    <div class="col-md-9 product-show">
+      <div class="col-md-6">
+        <%= attachment_image_tag @product, :image, format: 'jpeg', fallback: "no_image.jpg", size: "300x200" %>
       </div>
+      <div class="col-md-6">
+        <h2><%= @product.name %></h2><br>
+        <p><%= @product.explanation %></p>
+        <div>
+          <h3>￥<%=(@product.price * 1.1).floor %><font size="3">（税込）</font></h3>
+        </div>
 
-      <% if customer_signed_in? %>
-        <%= form_with model: @cart_product,local:true do |f| %>
-          <%= f.select :quantity, [*(1..10)], {include_blank: '個数選択'} %>
-          <%= f.hidden_field :customer_id, :value => current_customer.id %>
-          <%= f.hidden_field :product_id, :value => @product.id %>
-            <%= f.submit "カートに入れる", class:"ml-5 mt-4 btn btn-success" %>
+        <!-- 個数選択・決定ボタン（非ログイン時は隠れます）-->
+        <% if customer_signed_in? %>
+          <%= form_with model: @cart_product,local:true do |f| %>
+            <%= f.select :quantity, [*(1..10)], {include_blank: '個数選択'} %>
+            <%= f.hidden_field :customer_id, :value => current_customer.id %>
+            <%= f.hidden_field :product_id, :value => @product.id %>
+              <%= f.submit "カートに入れる", class:"ml-5 mt-4 btn btn-success" %>
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
     </div>
-  </div>
 
+  </div>
 </div>
