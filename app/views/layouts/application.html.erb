@@ -4,8 +4,10 @@
     <title>NaganoCake</title>
     <%= csrf_meta_tags %>
 
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application': 'reload' %>
+    <script src="https://kit.fontawesome.com/3ccadbe5bd.js" crossorigin="anonymous"></script>
   </head>
 
   <body>
@@ -19,6 +21,7 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
               <% if customer_signed_in? %>
+                <p>ようこそ、<%= current_customer.fullname %>さん！</p>
                 <li><%= link_to "マイページ", customers_my_page_path, class: "btn btn-sm btn btn-outline-secondary" %></li>
                 <li><%= link_to "商品一覧", products_path, class: "btn btn-sm btn btn-outline-secondary" %></li>
                 <li><%= link_to "カート", cart_products_path, class: "btn btn-sm btn btn-outline-secondary" %></li>

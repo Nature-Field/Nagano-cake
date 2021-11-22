@@ -3,6 +3,7 @@
 
   <div class="row col-12">
     <div class="col-md-2">ジャンル検索</div>
+    <%= render 'customer/products/genre_search_form', genres: @genres %>
     <div class="col-md-2 offset-1">
       <%= attachment_image_tag @product, :image, format: 'jpeg', fallback: "no_image.jpg", size: "300x200" %>
     </div>
