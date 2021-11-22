@@ -13,7 +13,7 @@
         <tr><th>支払方法</th><td><%= @order.payment_way_i18n %></td></tr>
         <tr><th>注文ステータス</th>
             <td><%= form_with model: [:admin,@order],local:true do |f| %>
-                <%= f.select :status,[ ["入金待ち","waiting"], ["入金確認","confirmed"], ["製作中","working"], ["発送準備中","preparing"], ["発送済み","shipped"] ] %>
+                <%= f.select :status,[ ["入金待ち","waiting"], ["入金確認","confirmed"], ["製作中","working"], ["発送準備中","preparing"], ["発送済み","shipped"] ],{}, { class:"form-control-sm" } %>
                 &emsp;&emsp;<%= f.submit '更新', class:"btn btn-sm btn-success" %>
                 <% end %></td></tr>
       </table>
@@ -37,8 +37,8 @@
               <td><%= order_d.quantity %></td>
               <td><%= order_d.price * order_d.quantity %></td>
               <td><%= form_with model: [:admin,order_d], local:true do |f| %>
-                  <%= f.select :create_status,[ ["製作不可","0"], ["製作待ち","1"], ["製作中","2"], ["製作完了","3"] ] %>
-                  &emsp;<%= f.submit '更新', class:"btn btn-sm btn-success"%><% end %></td>
+                  <%= f.select :create_status,[ ["製作不可","0"], ["製作待ち","1"], ["製作中","2"], ["製作完了","3"] ],{}, { class:"form-control-sm" } %>
+                  &emsp;&emsp;<%= f.submit '更新', class:"btn btn-sm btn-success"%><% end %></td>
             </tr>
             <% end %>
         </tbody>
