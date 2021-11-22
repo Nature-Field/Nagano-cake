@@ -11,7 +11,7 @@ class Admin::OrdersController < ApplicationController
 
   def update
     @order = Order.find(params[:id])
-    if @order.update(order_params) && @order.status == 1
+    if @order.update(order_params) && @order.status == "confirmed"
         OrderDetail.where(order_id: params[:id]).update_all(create_status: 1)
         redirect_back fallback_location: admin_path, notice: '注文ステータス更新に伴い、制作ステータスを更新しました'
     elsif !@order.update(order_params)

@@ -8,5 +8,13 @@
 
 Admin.create!(
     email: "NaganoCake@gmail.com" ,
-    encrypted_password: "NaganoCake"
+    password: "NaganoCake"
     )
+
+Genre.create!(
+    [
+        { name: "ケーキ" },
+        { name: "プリン" },
+        { name: "焼き菓子" },
+        { name: "キャンディ" }
+    ])
