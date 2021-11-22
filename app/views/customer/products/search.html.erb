@@ -1,6 +1,7 @@
 <div class="col-md-8 offset-1">
   <div>
-    <h1>一覧<font size="5">（全<%= @products_all.count %>件）</font></h1>
+    <% genre = Genre.find(params[:q][:genre_id_eq]) %>
+    <h1><%= genre.name %>一覧<font size="5">（全<%= @products.count %>件）</font></h1>
   </div>
 </div>
 
