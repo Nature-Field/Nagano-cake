@@ -15,13 +15,13 @@ class Customer::ProductsController < ApplicationController
     @q = Product.ransack(params[:q])
     @products_genre = @q.result(distinct: true)
   end
-  
+
   def search
     @q = Product.search(search_params)
     @products = @q.result(distinct: true)
     @products_all = Product.all
   end
-  
+
   private
   def search_params
     params.require(:q).permit(:genre_id_eq)
