@@ -14,13 +14,12 @@ class Customer::OrdersController < ApplicationController
 
   def create
     cart_products = current_customer.cart_products.all
-    carts = current_customer.cart_products
     @order = current_customer.orders.new(order_params)
     @cart_products_all = current_customer.cart_products.all
     @total = @cart_products_all.inject(0) { |sum, item| sum + (item.sum_of_price*1.1).floor } # カートに入ってる商品の合計金額
     @order.cost = 800 #送料
     @order.total_price = (@total.to_i + @order.cost)
-    if carts.present?
+    if cart_products.present?
       if @order.save
         cart_products.each do |cart|
           order_detail = OrderDetail.new
