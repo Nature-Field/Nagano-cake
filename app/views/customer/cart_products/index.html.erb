@@ -1,13 +1,11 @@
 <div class="container">
   <div class="row justify-content-end">
-    <h2 class="bg-light">ショッピングカート</h2>
+    <div class="h5 my-3 text-center theme col-3">ショッピングカート</div>
     <div class="col-lg-8 text-right">
       <%= link_to "カートを空にする", cart_products_destroy_all_cart_products_path, method: :delete, class:"btn btn-sm btn-danger" %>
     </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <table class="table table-bordered">
+    <table class="col table table-bordered">
+      <thead  class="text-center">
         <tr>
           <td class="col-3 theme">商品名</td>
           <td class="col-1 theme">単価（税込）</td>
@@ -15,7 +13,9 @@
           <td class="col-1 theme">小計</td>
           <td class="col-1 theme"></td>
         </tr>
-        <% @cart_products.each do |product| %>
+      </thead>
+      <% @cart_products.each do |product| %>
+      <tbody>
         <tr>
           <td><%= attachment_image_tag(product.product, :image, :fill, 50, 50 , size: "60x45") %>
               <%= product.product.name %></td>
@@ -28,20 +28,20 @@
           <td class="align-middle"><%= (product.quantity * (product.product.price*1.1).floor).to_s(:delimited) %></td>
           <td class="align-middle justify-content-center"><%= link_to "削除する", cart_product_path(product), method: :delete, class:"btn btn-sm btn-danger" %></td>
         </tr>
+      </tbody>
         <% end %>
       </table>
-    </div>
   </div>
+
   <div class="row justify-content-end  mt-5">
     <div class="col-lg-3 mt-3">
       <%= link_to "買い物を続ける", products_path, class:"btn btn-sm btn-primary" %>
     </div>
-    <div class="col-lg-8">
-      <table class="table-bordered offset-7">
-        <td class="col-2 pt-3 pb-3 pl-1" style="background-color: #EEEEEE;">合計金額</td>
-        <td class="col-2"><%= @total.round.to_s(:delimited)%></td>
+
+      <table class="col table-bordered offset-7">
+        <td class="col-3 pt-3 pb-3 pl-1" style="background-color: #EEEEEE;">合計金額</td>
+        <td class="col-1"><%= @total.round.to_s(:delimited)%></td>
       </table>
-    </div>
   </div>
   <div class="row justify-content-center mt-5">
     <% if @cart_products.present? %>
