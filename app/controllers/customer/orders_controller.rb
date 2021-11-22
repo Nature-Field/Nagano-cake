@@ -14,25 +14,30 @@ class Customer::OrdersController < ApplicationController
 
   def create
     cart_products = current_customer.cart_products.all
+    carts = current_customer.cart_products
     @order = current_customer.orders.new(order_params)
     @cart_products_all = current_customer.cart_products.all
     @total = @cart_products_all.inject(0) { |sum, item| sum + (item.sum_of_price*1.1).floor } # カートに入ってる商品の合計金額
     @order.cost = 800 #送料
     @order.total_price = (@total.to_i + @order.cost)
-    if @order.save
-      cart_products.each do |cart|
-        order_detail = OrderDetail.new
-        order_detail.product_id = cart.product_id
-        order_detail.order_id = @order.id
-        order_detail.quantity = cart.quantity
-        order_detail.price = cart.product.price
-        order_detail.save
+    if carts.present?
+      if @order.save
+        cart_products.each do |cart|
+          order_detail = OrderDetail.new
+          order_detail.product_id = cart.product_id
+          order_detail.order_id = @order.id
+          order_detail.quantity = cart.quantity
+          order_detail.price = cart.product.price
+          order_detail.save
+        end
+        redirect_to complete_orders_path
+        cart_products.destroy_all
+      else
+        @order = Order.new(order_params)
+        render :new
       end
-      redirect_to complete_orders_path
-      cart_products.destroy_all
     else
-      @order = Order.new(order_params)
-      render :new
+      redirect_to products_path
     end
   end
 
