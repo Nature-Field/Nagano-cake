@@ -3,6 +3,7 @@ ja:
     models:
       shipping_address: 配送先
       customer: お客様情報
+      order: 注文情報
     attributes:
       shipping_address:
         name: 宛名
@@ -18,3 +19,7 @@ ja:
         phone_number: 電話番号
         postal_code: 郵便番号
         address: 住所
+      order:
+        postal_code: 郵便番号
+        address: 住所
+        name: 宛名
