@@ -8,12 +8,12 @@
     </div>
 
     <!-- 商品画像 -->
-    <div class="col-md-3">
+    <div class="col-md-4">
         <%= attachment_image_tag @product, :image, format: 'jpeg', fallback: "no_image.jpg", size: "300x200" %>
     </div>
-    
+
     <!-- 商品説明・個数 -->
-    <div class="col-md-4 offset-1">
+    <div class="col-md-5">
       <h2><%= @product.name %></h2><br>
       <p><%= @product.explanation %></p>
       <div>
