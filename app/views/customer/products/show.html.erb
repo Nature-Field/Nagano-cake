@@ -21,11 +21,15 @@
 
         <!-- 個数選択・決定ボタン（非ログイン時は隠れます）-->
         <% if customer_signed_in? %>
-          <%= form_with model: @cart_product,local:true do |f| %>
-            <%= f.select :quantity, [*(1..10)], {include_blank: '個数選択'} %>
-            <%= f.hidden_field :customer_id, :value => current_customer.id %>
-            <%= f.hidden_field :product_id, :value => @product.id %>
+          <% if @product.is_active == false %>
+            <p class="text-danger">売り切れ</p>
+          <% else %>
+            <%= form_with model: @cart_product,local:true do |f| %>
+              <%= f.select :quantity, [*(1..10)], {include_blank: '個数選択'} %>
+              <%= f.hidden_field :customer_id, :value => current_customer.id %>
+              <%= f.hidden_field :product_id, :value => @product.id %>
               <%= f.submit "カートに入れる", class:"ml-5 mt-4 btn btn-success" %>
+            <% end %>
           <% end %>
         <% end %>
       </div>
