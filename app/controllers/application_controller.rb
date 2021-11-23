@@ -5,10 +5,18 @@ class ApplicationController < ActionController::Base
   #ログイン後のリンク先設定
   def after_sign_in_path_for(resource)
     case resource
-    when Customer
+      when Customer
+        root_path
+      when Admin
+        admin_path
+    end
+  end
+  #ログアウト後のリンク先設定
+  def after_sign_out_path_for(resource)
+    if resource_class == Admin
+      new_admin_session_path
+    else
       root_path
-    when Admin
-      admin_path
     end
   end
 
