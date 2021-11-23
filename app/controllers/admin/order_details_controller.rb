@@ -7,7 +7,7 @@ class Admin::OrderDetailsController < ApplicationController
     #自動更新②
     @order_details = OrderDetail.where(order_id: @order_detail.order_id).pluck(:create_status)
     Order.find(@order_detail.order_id).update(status: 3) if @order_details.all?(3)
-    redirect_back fallback_location: admin_path
+    redirect_back fallback_location: admin_path, notice: 'ステータスを更新しました'
   end
 
 
