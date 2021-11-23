@@ -55,3 +55,4 @@ gem 'ransack'
 gem 'dotenv-rails'
 gem 'kaminari'
 gem "enum_help"
+gem 'rails-i18n'
