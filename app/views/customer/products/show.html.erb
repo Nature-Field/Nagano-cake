@@ -7,28 +7,27 @@
       <%= render 'customer/products/genre_search_form', genres: @genres %>
     </div>
 
-    <!-- 商品画像・名前・説明 -->
-    <div class="col-md-9 product-show">
-      <div class="col-md-6">
+    <!-- 商品画像 -->
+    <div class="col-md-3">
         <%= attachment_image_tag @product, :image, format: 'jpeg', fallback: "no_image.jpg", size: "300x200" %>
+    </div>
+    
+    <!-- 商品説明・個数 -->
+    <div class="col-md-4 offset-1">
+      <h2><%= @product.name %></h2><br>
+      <p><%= @product.explanation %></p>
+      <div>
+        <h3>￥<%=(@product.price * 1.1).floor %><font size="3">（税込）</font></h3>
       </div>
-      <div class="col-md-6">
-        <h2><%= @product.name %></h2><br>
-        <p><%= @product.explanation %></p>
-        <div>
-          <h3>￥<%=(@product.price * 1.1).floor %><font size="3">（税込）</font></h3>
-        </div>
-
-        <!-- 個数選択・決定ボタン（非ログイン時は隠れます）-->
-        <% if customer_signed_in? %>
+      <!-- 個数選択・決定ボタン（非ログイン時は隠れます）-->
+      <% if customer_signed_in? %>
           <%= form_with model: @cart_product,local:true do |f| %>
             <%= f.select :quantity, [*(1..10)], {include_blank: '個数選択'} %>
             <%= f.hidden_field :customer_id, :value => current_customer.id %>
             <%= f.hidden_field :product_id, :value => @product.id %>
               <%= f.submit "カートに入れる", class:"ml-5 mt-4 btn btn-success" %>
           <% end %>
-        <% end %>
-      </div>
+      <% end %>
     </div>
 
   </div>
