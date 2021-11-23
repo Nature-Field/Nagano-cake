@@ -16,7 +16,13 @@
           <div class="card">
             <%= attachment_image_tag product, :image, format: 'jpeg', fallback: "no_image.jpg", height:150 %>
             <p class= "mt-3"><%= link_to product.name, product_path(product.id) %></p>
-            <p>￥<%= (product.price*1.1).floor %></p>
+            
+            <% if product.is_active == false %>
+              <p class="text-danger">売り切れ</p>
+            <% else %>
+              <p>￥<%= (product.price*1.1).floor %></p>
+            <% end %>
+            
           </div>
         </div>
       <% end %>

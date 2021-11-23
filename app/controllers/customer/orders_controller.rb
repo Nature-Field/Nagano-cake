@@ -26,7 +26,7 @@ class Customer::OrdersController < ApplicationController
           order_detail.product_id = cart.product_id
           order_detail.order_id = @order.id
           order_detail.quantity = cart.quantity
-          order_detail.price = cart.product.price
+          order_detail.price = (cart.product.price*1.1).floor
           order_detail.save
         end
         redirect_to complete_orders_path
