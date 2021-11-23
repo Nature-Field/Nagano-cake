@@ -62,7 +62,7 @@ class Customer::OrdersController < ApplicationController
     @order.address = current_customer.address
     @order.postal_code = current_customer.postal_code
   elsif params[:order][:address_number] == "2"
-    if ShippingAddress.where(params[:order][:address_id]).exists?
+    if current_customer.shipping_addresses.where(params[:order][:address_id]).exists?
       order_address = ShippingAddress.find(params[:order][:address_id])
       @order.postal_code = order_address.postal_code
       @order.address     = order_address.address
