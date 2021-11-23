@@ -11,7 +11,7 @@ class Customer::ShippingAddressesController < ApplicationController
     @shipping_address = ShippingAddress.new(shipping_address_params)
     if @shipping_address.save
       redirect_to shipping_addresses_path, notice: "You have created address successfully."
-    else @addresses = ShippingAddress.includes(:customer)
+    else @addresses = current_customer.shipping_addresses
       render 'index'
     end
   end
