@@ -5,10 +5,6 @@ class Customer::CartProductsController < ApplicationController
     @cart_products = current_customer.cart_products
     # カートに入ってる商品の合計金額
     @total = @cart_products.inject(0) { |sum, product| sum + (product.sum_of_price*1.1).floor }
-    @cart_products.each do |pr|
-     @genre = pr.product.genre_id
-    end
-    @products = Product.where(genre_id: @genre)
   end
 
   def destroy_all
