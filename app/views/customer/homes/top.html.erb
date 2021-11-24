@@ -8,7 +8,7 @@
     </div>
 
     <!-- メイン部分 -->
-    <div class="col-md-8">
+    <div class="col-md-9">
       <div class="toptitle mb-4">
         <h1>Welcom to NaganoCake !</h1>
       </div>
@@ -29,17 +29,17 @@
       </div>
 
       <!-- 新着商品を4件表示 -->
+      <div class="row justify-content-center">
       <% @product.each do |product| %>
-        <div class="mt-3" style="float: right;">
-          <div class="col-md-12">
-            <div class="card">
-              <%= attachment_image_tag product, :image, format: 'jpeg', fallback: "no_image.jpg", height:150 %>
-              <p class= "mt-3"><%= link_to product.name, product_path(product.id) %></p>
-              <p>￥<%= product.price %></p>
-            </div>
+              <div class="col-md-3 col-5 mt-3" style="float: right;">
+          <div class="card">
+            <%= attachment_image_tag product, :image, format: 'jpeg', fallback: "no_image.jpg", height:150 %>
+            <p class= "mt-3"><%= link_to product.name, product_path(product.id) %></p>
+            <p>￥<%= product.price %></p>
           </div>
         </div>
       <% end %>
+    </div>
     </div>
     <!-- メイン部分終了 -->
 
