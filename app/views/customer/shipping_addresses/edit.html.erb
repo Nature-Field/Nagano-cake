@@ -6,7 +6,9 @@
 
   <div>
     <%= form_with model: @shipping_address, local:true do |f| %>
+    
       <%= render "customer/shared/error_messages", resource: @shipping_address %>
+      
       <div class="mb-2">
         <%= f.label :郵便番号（ハイフンなし）, class:"control-label col-3" %>
         <%= f.text_field :postal_code, autofocus: true, class:"col-2" %>
