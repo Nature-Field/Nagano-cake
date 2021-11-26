@@ -11,41 +11,44 @@
   </head>
 
   <body>
-    <header>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-          <a class="navbar-brand" href="/"><i class="fas fa-apple-alt" id="apple-L"></i><span id="logo"> LINGO </span><i class="fas fa-apple-alt" id="apple-R"></i></a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav ml-auto">
-              <% if customer_signed_in? %>
-                <p>ようこそ、<%= current_customer.fullname %>さん！</p>
-                <li><%= link_to "マイページ", customers_my_page_path, class: "btn btn-sm btn btn-outline-secondary hm" %></li>
-                <li><%= link_to "商品一覧", products_path, class: "btn btn-sm btn btn-outline-secondary hm" %></li>
-                <li><%= link_to "カート", cart_products_path, class: "btn btn-sm btn btn-outline-secondary hm" %></li>
-                <li><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "btn btn-sm btn btn-outline-secondary" %></li>
-              <% elsif admin_signed_in? %>
-                <li><%= link_to "商品一覧", admin_products_path, class: "btn btn-sm btn btn-outline-secondary hm" %></li>
-                <li><%= link_to "会員一覧", admin_customers_path, class: "btn btn-sm btn btn-outline-secondary hm" %></li>
-                <li><%= link_to "注文履歴一覧", admin_path, class: "btn btn-sm btn btn-outline-secondary hm" %></li>
-                <li><%= link_to "ジャンル一覧", admin_genres_path, class: "btn btn-sm btn btn-outline-secondary hm" %></li>
-                <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-sm btn btn-outline-secondary" %></li>
-              <% else %>
-                <li><%= link_to "About", home_about_path, class: "btn btn-sm btn btn-outline-secondary hm" %></li>
-                <li><%= link_to "商品一覧", products_path, class: "btn btn-sm btn btn-outline-secondary hm" %></li>
-                <li><%= link_to "新規登録", new_customer_registration_path, class: "btn btn-sm btn btn-outline-secondary hm" %></li>
-                <li><%= link_to "ログイン", new_customer_session_path, class: "btn btn-sm btn btn-outline-secondary" %></li>
-              <% end %>
-            </ul>
+    <div class="wrapper">
+      <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <div class="container">
+            <a class="navbar-brand" href="/"><i class="fas fa-apple-alt" id="apple-L"></i><span id="logo"> LINGO </span><i class="fas fa-apple-alt" id="apple-R"></i></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul class="navbar-nav ml-auto">
+                <% if customer_signed_in? %>
+                  <p>ようこそ、<%= current_customer.fullname %>さん！</p>
+                  <li><%= link_to "マイページ", customers_my_page_path, class: "btn btn-sm btn btn-outline-secondary hm" %></li>
+                  <li><%= link_to "商品一覧", products_path, class: "btn btn-sm btn btn-outline-secondary hm" %></li>
+                  <li><%= link_to "カート", cart_products_path, class: "btn btn-sm btn btn-outline-secondary hm" %></li>
+                  <li><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "btn btn-sm btn btn-outline-secondary" %></li>
+                <% elsif admin_signed_in? %>
+                  <li><%= link_to "商品一覧", admin_products_path, class: "btn btn-sm btn btn-outline-secondary hm" %></li>
+                  <li><%= link_to "会員一覧", admin_customers_path, class: "btn btn-sm btn btn-outline-secondary hm" %></li>
+                  <li><%= link_to "注文履歴一覧", admin_path, class: "btn btn-sm btn btn-outline-secondary hm" %></li>
+                  <li><%= link_to "ジャンル一覧", admin_genres_path, class: "btn btn-sm btn btn-outline-secondary hm" %></li>
+                  <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-sm btn btn-outline-secondary" %></li>
+                <% else %>
+                  <li><%= link_to "About", home_about_path, class: "btn btn-sm btn btn-outline-secondary hm" %></li>
+                  <li><%= link_to "商品一覧", products_path, class: "btn btn-sm btn btn-outline-secondary hm" %></li>
+                  <li><%= link_to "新規登録", new_customer_registration_path, class: "btn btn-sm btn btn-outline-secondary hm" %></li>
+                  <li><%= link_to "ログイン", new_customer_session_path, class: "btn btn-sm btn btn-outline-secondary" %></li>
+                <% end %>
+              </ul>
+            </div>
           </div>
-        </div>
-        <%= render 'searches/search' %>
-      </nav>
-    </header>
-    <div class="my-2" id="notice"><%= notice %></div>
-    <div class="my-2" id="alert"><%= alert %></div>
-    <%= yield %>
+          <%= render 'searches/search' %>
+        </nav>
+      </header>
+      <div class="my-2" id="notice"><%= notice %></div>
+      <div class="my-2" id="alert"><%= alert %></div>
+      <%= yield %>
+      <footer>@NaganoCake. @Nature-field</footer>
+    </div>
   </body>
 </html>
