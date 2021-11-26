@@ -5,8 +5,8 @@
   </div>
 
   <div class="row">
-    <div class="mt-5 col-4">
-      <%= attachment_image_tag @product, :image, fallback:"noimage_product.jpg", size:'300x300' %>
+    <div class="mt-5 col-4 text-center">
+      <%= attachment_image_tag @product, :image, :fill, 200, 200, fallback:"noimage_product.jpg" %>
     </div>
 
     <table class="table table-borderless mt-5 ml-3 col-7">

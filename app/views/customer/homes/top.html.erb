@@ -32,7 +32,7 @@
       <% @product.each do |product| %>
         <div class="col-md-3 mt-3" style="float: right;">
           <div class="card">
-            <%= attachment_image_tag product, :image, format: 'jpeg', fallback: "no_image.jpg", height:150 %>
+            <%= attachment_image_tag product, :image, :fill, 200, 200, fallback:"noimage_product.jpg" %>
             <p class= "mt-3"><%= link_to product.name, product_path(product.id) %></p>
             <p>￥<%= product.price %></p>
           </div>
