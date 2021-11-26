@@ -1,0 +1,33 @@
+
+<div class="container mt-3 mb-3">
+  <div class="row offset-1 mb-5">
+    <h2>配送先登録/一覧</h2>
+  </div>
+
+    <%= render 'customer/shipping_addresses/form', shipping_address: @shipping_address %>
+
+  <div class="row mt-5">
+    <table class="col-9 table table-bordered" style="table-layout: fixed;">
+      <thead style="background-color: #EEEEEE;">
+        <tr>
+          <td class="col-2">郵便番号</td>
+          <td class="col-3">住所</td>
+          <td class="col-2">宛名</td>
+          <td class="col-3"></td>
+        </tr>
+      </thead>
+      <% @addresses.each do |address| %>
+      <tr>
+        <td><%= address.postal_code %></td>
+        <td><div style="overflow: auto; white-space: nowrap;"><%= address.address %></div></td>
+        <td><div style="overflow: auto; white-space: nowrap;"><%= address.name %></div></td>
+        <td style="text-align: center;">
+            <%= link_to "編集する", edit_shipping_address_path(address),class:"btn btn-sm btn-success" %>
+            <span>　</span>
+            <%= link_to "削除する", shipping_address_path(address), method: :delete, class:"btn btn-sm btn-danger" %>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

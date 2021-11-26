@@ -1,0 +1,117 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+@import 'bootstrap';
+
+.theme{
+    background-color: whitesmoke;
+}
+#notice{
+  font-size: 14px;
+  color: green;
+}
+
+#alert{
+  font-size: 14px;
+  color: red;
+}
+
+/*デフォルトエラーメッセージが出た際、レイアウトが崩れないCSSを記述*/
+.field_with_errors {
+  display: contents;
+}
+
+//テーブルクラス内のリンク表記変更：カスタマー側で影響がでないか注意！
+td > a{
+  color: black;
+  text-decoration: underline;
+}
+
+//kaminariの中央寄せ
+.pagination {
+  justify-content: center;
+}
+
+//販売ステータス
+.sale{
+  color: green;
+}
+.sold{
+  color: gray;
+}
+
+.resign{
+  color: silver;
+}
+
+.valid{
+  color: limegreen;
+}
+
+.no-underline{
+  text-decoration: none;
+}
+
+.form{
+  display: inline-flex;
+}
+
+.ge-edit{
+  margin-bottom: 30px;
+}
+
+.hm{
+  margin-right: 10px;
+}
+
+//logo用
+#apple-L{
+  font-size :1rem;
+  color: #E45653;
+  transform: rotate( -30deg );
+}
+#apple-R{
+  font-size :1rem;
+  color: #B4CF9E;
+  transform: rotate( 30deg );
+}
+#logo{
+  font-family: Hannotate SC;
+}
+
+.nav-item{
+  margin-left: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+
+.wrapper{
+    min-height: 100vh; /* 高さの最小値=画面の高さの100% */
+    position: relative; /*相対位置*/
+    padding-bottom: 78px; /* footer高さと同じ数値を指定,footer下に隠れない様にする */
+    box-sizing: border-box; /*padding等全て含めてmin-height:100vhに*/
+}
+
+footer{
+    width: 100%;
+    height: 78px;
+    background-color: #f8f9fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;/*←絶対位置*/
+    bottom: 0; /*下に固定*/
+}
+

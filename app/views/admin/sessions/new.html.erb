@@ -1,0 +1,31 @@
+<div class="container mt-5 mb-5">
+  <div class="col-3 offset-1 mb-5" style="background-color: #EEEEEE">
+    <h4 style="text-align: center;">管理者ログイン</h4>
+  </div>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="field orm-group col-12 offset-2">
+    <%= f.label :"メールアドレス", class:"control-label col-2" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"col-4" %>
+  </div>
+
+  <div class="field form-group col-12 offset-2">
+    <%= f.label :"パスワード", class:"control-label col-2" %>
+    <%= f.password_field :password, autocomplete: "current-password",class:"col-4"  %>
+  </div>
+
+  <% if devise_mapping.rememberable? %>
+    <div class="field offset-md-4">
+      <%= f.check_box :remember_me %>
+      <%= f.label :remember_me %>
+    </div>
+  <% end %>
+
+  <div class="actions col-3 offset-md-4">
+    <%= f.submit "ログイン",class: "btn btn-block btn-primary " %>
+  </div>
+<% end %>
+
+<%= render "admin/shared/links" %>
+
+</div>

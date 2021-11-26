@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <div class="mt-5 col-md-9 offset-3">
+      <div class="mb-3">
+        <h1><%= Genre.find(params[:q][:genre_id_eq]).name %>一覧<font size="5">（全<%= @products.count %>件）</font></h1>
+      </div>
+
+      <% @products.each do |product| %>
+        <div class="col-md-3 mb-5" style="float: left;">
+          <div class="card">
+            <%= attachment_image_tag product, :image, :fill, 200, 200, fallback:"noimage_product.jpg" %>
+            <p class= "mt-3 "><%= link_to product.name, product_path(product.id) %></p>
+            <% if product.is_active == false %>
+              <p class="text-danger">売り切れ</p>
+            <% else %>
+              <p>￥<%= (product.price*1.1).floor %></p>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+

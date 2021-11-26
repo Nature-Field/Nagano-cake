@@ -1,0 +1,25 @@
+ja:
+  activerecord:
+    models:
+      shipping_address: 配送先の登録
+      customer: お客様情報の登録
+      order: 新しいお届け先の登録
+    attributes:
+      shipping_address:
+        name: 宛名
+        postal_code: 郵便番号
+        address: 住所
+      customer:
+        email: メールアドレス
+        password: パスワード
+        first_name: 名
+        last_name: 姓
+        first_name_kana: メイ
+        last_name_kana: セイ
+        phone_number: 電話番号
+        postal_code: 郵便番号
+        address: 住所
+      order:
+        postal_code: 郵便番号
+        address: 住所
+        name: 宛名
